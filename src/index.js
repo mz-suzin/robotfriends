@@ -1,21 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'tachyons';
 //import App from './App'; //When theres no file type after the name, React assumes it is .js
-// import Hello from './Hello';
 import reportWebVitals from './reportWebVitals';
+import App2 from './App2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
-
-
-
-
-
-
-    {/* <Hello greeting={'hello again my friend'}/> greeting is a property and can be accessed through this.props or stuff like this */}
+      <App2 />
   </React.StrictMode>
 );
 
