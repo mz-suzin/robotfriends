@@ -1,9 +1,9 @@
 import React from 'react';
-import CardList from './CardList';
+import CardList from '../components/CardList';
 //import { robots } from './robots'; //i'm deestructuring this one because the export method is not default. It is exporting a const variable.
-import SearchBox from './SearchBox';
+import SearchBox from '../components/SearchBox';
 import './App2.css'
-import Scroll from './Scroll'
+import Scroll from '../components/Scroll'
 
 class App2 extends React.Component { //this is a smart component
     constructor() {
@@ -25,18 +25,23 @@ class App2 extends React.Component { //this is a smart component
     }
 
     render() {
-        const filteredRobots = this.state.robots.filter(robot => {
-            return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        const { robots, searchfield } = this.state; //just to make it cleaner
+
+        const filteredRobots = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         })
-        return(
-        <div className='tc'>
-            <h1>RoboFriends</h1>
-            <SearchBox searchChange={this.onSearchChange}/>
-            <Scroll>
-                <CardList robots={filteredRobots}/>
-            </Scroll>
-            {/* <footer>Designed with many doubts - Iorek INC</footer> */}
-        </div>
+
+        return !robots.length ?
+        <h1>Loading</h1> :
+        (
+            <div className='tc'>
+                <h1>RoboFriends</h1>
+                <SearchBox searchChange={this.onSearchChange}/>
+                <Scroll>
+                    <CardList robots={filteredRobots}/>
+                </Scroll>
+                {/* <footer>Designed with many doubts - Iorek INC</footer> */}
+            </div>
         );
     }
 }

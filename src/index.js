@@ -4,7 +4,7 @@ import './index.css';
 import 'tachyons';
 //import App from './App'; //When theres no file type after the name, React assumes it is .js
 import reportWebVitals from './reportWebVitals';
-import App2 from './App2';
+import App2 from './containers/App2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
