@@ -4,6 +4,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import './App2.css'
 import Scroll from '../components/Scroll'
+import ErrorBoundary from '../components/ErrorBoundary';
 
 class App2 extends React.Component { //this is a smart component
     constructor() {
@@ -31,14 +32,16 @@ class App2 extends React.Component { //this is a smart component
             return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         })
 
-        return !robots.length ?
-        <h1>Loading</h1> :
-        (
+        return !robots.length ? //if
+        <h1>Loading</h1> : //true
+        ( //false
             <div className='tc'>
                 <h1>RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChange}/>
                 <Scroll>
-                    <CardList robots={filteredRobots}/>
+                    <ErrorBoundary>
+                        <CardList robots={filteredRobots}/>
+                    </ErrorBoundary>
                 </Scroll>
                 {/* <footer>Designed with many doubts - Iorek INC</footer> */}
             </div>
