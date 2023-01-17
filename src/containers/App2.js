@@ -5,6 +5,7 @@ import SearchBox from '../components/SearchBox';
 import './App2.css'
 import Scroll from '../components/Scroll'
 import ErrorBoundary from '../components/ErrorBoundary';
+import AddBox from '../components/AddBox';
 
 function App2 () {
     const [robots, setRobots] = useState([]); //this is array destructuring
@@ -32,7 +33,10 @@ function App2 () {
         ( //false
             <div className='tc'>
                 <h1>RoboFriends</h1>
-                <SearchBox searchChange={onSearchChange}/>
+                <div className='flex-auto'>
+                    <SearchBox searchChange={onSearchChange}/>
+                    <AddBox />
+                </div>
                 <Scroll>
                     <ErrorBoundary>
                         <CardList robots={filteredRobots}/>
